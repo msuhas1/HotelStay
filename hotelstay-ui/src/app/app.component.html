@@ -1,0 +1,70 @@
+<main class="page-shell">
+  <section class="panel card">
+    <div class="hero">
+      <div>
+        <h1>SkyRoute Hotel Booking</h1>
+        <p>Search available hotel rooms and book instantly with a modern, clean interface.</p>
+      </div>
+    </div>
+
+    <form [formGroup]="searchForm" (ngSubmit)="search()" class="search-form">
+      <div class="form-grid">
+        <label class="form-field">
+          Destination
+          <input formControlName="destination" placeholder="Enter city or destination" />
+        </label>
+
+        <label class="form-field">
+          Check In
+          <input type="date" formControlName="checkIn" />
+        </label>
+
+        <label class="form-field">
+          Check Out
+          <input type="date" formControlName="checkOut" />
+        </label>
+
+        <label class="form-field">
+          Room Type
+          <select formControlName="roomType">
+            <option value="">Any</option>
+            <option value="Standard">Standard</option>
+            <option value="Deluxe">Deluxe</option>
+            <option value="Suite">Suite</option>
+          </select>
+        </label>
+      </div>
+
+      <button type="submit" [disabled]="searchForm.invalid">Search Hotels</button>
+    </form>
+  </section>
+
+  <section *ngIf="results.length" class="panel card results-section">
+    <div class="section-header">
+      <h2>Search Results</h2>
+      <p>{{ results.length }} hotel option(s) available.</p>
+    </div>
+
+    <ul class="result-list">
+      <li *ngFor="let result of results" class="result-card">
+        <div class="result-top">
+          <div>
+            <span class="provider">{{ result.providerName }}</span>
+            <h3>{{ result.hotelName }}</h3>
+          </div>
+          <div class="price">{{ result.totalPrice | currency:'USD' }}</div>
+        </div>
+
+        <div class="result-meta">
+          <span>{{ result.destination }}</span>
+          <span>{{ result.checkIn }} → {{ result.checkOut }}</span>
+          <span>{{ result.roomType }}</span>
+        </div>
+
+        <div class="result-actions">
+          <button class="book-button" (click)="book(result)">Book Now</button>
+        </div>
+      </li>
+    </ul>
+  </section>
+</main>

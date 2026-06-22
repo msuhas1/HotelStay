@@ -1,0 +1,22 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build-api",
+      "type": "shell",
+      "command": "dotnet build ${workspaceFolder}/HotelStay.Api/HotelStay.Api.csproj -c Debug",
+      "problemMatcher": ["$msCompile"],
+      "group": "build"
+    },
+    {
+      "label": "start-ui",
+      "type": "shell",
+      "command": "npm run start",
+      "options": {
+        "cwd": "${workspaceFolder}/hotelstay-ui"
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    }
+  ]
+}

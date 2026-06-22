@@ -1,0 +1,35 @@
+{
+  "$schema": "https://angular.io/cli/latest/schema.json",
+  "version": 1,
+  "projects": {
+    "hotelstay-ui": {
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/hotelstay-ui",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json"
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "hotelstay-ui:build",
+            "host": "localhost",
+            "port": 61687
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "hotelstay-ui",
+  "cli": {
+    "analytics": false
+  }
+}
