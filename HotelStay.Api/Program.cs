@@ -40,6 +40,8 @@ builder.Services.AddSingleton<HotelBookingService>();
 builder.Services.ConfigureHttpJsonOptions(opts =>
 {
     opts.SerializerOptions.Converters.Add(new DateOnlyJsonConverter());
+    // Allow enums to be deserialized from their string names (e.g. "Passport")
+    opts.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
 });
 
 var app = builder.Build();

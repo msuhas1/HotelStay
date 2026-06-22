@@ -47,6 +47,7 @@ main.page-shell {
   font-weight: 700;
 }
 
+
 .search-form {
   display: flex;
   flex-direction: column;
@@ -59,11 +60,17 @@ main.page-shell {
 }
 
 .form-field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  align-items: center;
+  gap: 0.6rem;
   font-weight: 600;
   color: #334155;
+}
+
+.label-text {
+  justify-self: start;
+  padding-right: 0.25rem;
 }
 
 input,
@@ -85,8 +92,15 @@ select:focus {
   background: #ffffff;
 }
 
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
 button {
-  margin-top: 1.5rem;
+  margin-top: 0;
   padding: 0.95rem 1.25rem;
   width: fit-content;
   border: none;
@@ -187,6 +201,10 @@ button:disabled {
   font-size: 0.95rem;
 }
 
+.result-top .price {
+  text-align: right;
+}
+
 .result-actions {
   display: flex;
 }
@@ -211,6 +229,11 @@ button:disabled {
   .form-grid,
   .result-meta {
     grid-template-columns: 1fr;
+  }
+
+  .form-field {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
   }
 
   .hero {

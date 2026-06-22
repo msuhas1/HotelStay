@@ -4,7 +4,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   searchForm = this.fb.group({
@@ -42,6 +43,9 @@ export class AppComponent {
 
     this.http.get<any[]>('https://localhost:59292/hotels/search', { params }).subscribe(data => {
       this.results = data;
+      this.results?.forEach(result => {
+        result.available = true;
+      });
     }, err => {
       console.error('Search error', err);
       alert('Search failed: ' + (err?.error?.error ?? err?.statusText ?? 'unknown'));
@@ -61,6 +65,7 @@ export class AppComponent {
     };
 
     this.http.post('https://localhost:59292/hotels/book', payload).subscribe(() => {
+      result.available = false;
       alert('Booking submitted successfully.');
     }, err => {
       console.error('Booking error', err);

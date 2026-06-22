@@ -10,22 +10,22 @@
     <form [formGroup]="searchForm" (ngSubmit)="search()" class="search-form">
       <div class="form-grid">
         <label class="form-field">
-          Destination
+          <span class="label-text">Destination</span>
           <input formControlName="destination" placeholder="Enter city or destination" />
         </label>
 
         <label class="form-field">
-          Check In
+          <span class="label-text">Check In</span>
           <input type="date" formControlName="checkIn" />
         </label>
 
         <label class="form-field">
-          Check Out
+          <span class="label-text">Check Out</span>
           <input type="date" formControlName="checkOut" />
         </label>
 
         <label class="form-field">
-          Room Type
+          <span class="label-text">Room Type</span>
           <select formControlName="roomType">
             <option value="">Any</option>
             <option value="Standard">Standard</option>
@@ -35,7 +35,9 @@
         </label>
       </div>
 
-      <button type="submit" [disabled]="searchForm.invalid">Search Hotels</button>
+      <div class="form-actions">
+        <button type="submit" [disabled]="searchForm.invalid">Search Hotels</button>
+      </div>
     </form>
   </section>
 
@@ -62,7 +64,9 @@
         </div>
 
         <div class="result-actions">
-          <button class="book-button" (click)="book(result)">Book Now</button>
+          <button class="book-button" (click)="book(result)" [disabled]="!result.available">
+            {{ result.available ? 'Book Now' : 'Booked' }}
+            </button>
         </div>
       </li>
     </ul>
