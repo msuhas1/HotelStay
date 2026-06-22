@@ -28,5 +28,4 @@ Copilot was used to scaffold project files, generate models, provider stubs, and
 2. Run tests: `dotnet test HotelStay.Tests\HotelStay.Tests.csproj`
 
 ## Notes
-- The Angular frontend is scaffolded manually due to npm not being available in this environment.
 - Destination metadata includes at least 2 domestic and 3 international cities.
